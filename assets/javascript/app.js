@@ -1,3 +1,5 @@
+//Array for all of the Trivia Questions, Answers,
+//and position reference for the correct answers
 var triviaArray = [{
   triviaQuestion: "Name the cannibals feared by all in Serenity",
   ansArray: ["Ravagers", "Reavers", "Berserkers", "Zipper Heads"],
@@ -39,7 +41,7 @@ var triviaArray = [{
   ansArray: ["5", "9", "3", "12"],
   answer: 3
 }];
-
+//Global Variables for the Game:
 var imgArray = ['reaver', 'drwho', 'lordh', 'eleven', 'hal', 'miranda', 'imperatorf','imjoe', 'juliem', 'bstarg'];
 var questionNum; 
 var correctAnswer; 
@@ -55,17 +57,17 @@ var responseToUsr = {
   endTime: "Out of time!",
   finished: "GAME OVER!"
 }
-
+//Button click to begin the game and hide
 $('#startBtn').on('click', function(){
   $(this).hide();
   newGame();
 });
-
+//Restarting by clicking the button
 $('#startOverBtn').on('click', function(){
   $(this).hide();
   newGame();
 });
-
+//Function to reset all vars & data outputted to divs
 function newGame(){
   $('#gameOver').empty();
   $('#numRightAnswers').empty();
@@ -77,14 +79,14 @@ function newGame(){
   unanswered = 0;
   newQuestion();
 }
-
+//Function to clear the screen when moving on to the next question
 function newQuestion(){
   $('#userMessage').empty();
   $('#answerToQuestion').empty();
   $('#gify').empty();
   answered = true;
   
-  //sets up new questions & ansArray
+  //Displays new questions and their question position in the array
   $('#questionNumber').html('Question #'+(questionNum+1)+'/'+triviaArray.length);
   $('.triviaQuestion').html('<h2>' + triviaArray[questionNum].triviaQuestion + '</h2>');
   for(var i = 0; i < 4; i++){
@@ -92,17 +94,19 @@ function newQuestion(){
     choices.text(triviaArray[questionNum].ansArray[i]);
     choices.attr({'data-index': i });
     choices.addClass('thisChoice');
+    //displays out to the associated div
     $('.ansArray').append(choices);
   }
+  //Calls the countdown/timer function 
   countdown();
-  //clicking an answer will pause the time and setup answerPage
+  //Clicking an answer will pause the time and setup answerPage
   $('.thisChoice').on('click',function(){
     userSelect = $(this).data('index');
     clearInterval(time);
     answerPage();
   });
 }
-
+// Sets up the Timer countdown function/initial value while calling showCountdown function
 function countdown(){
   seconds = 15;
   $('#timer').html('<h3>Time Remaining: ' + seconds + '</h3>');
@@ -110,7 +114,8 @@ function countdown(){
   //sets timer to go down
   time = setInterval(showCountdown, 1000);
 }
-
+//Shows the timer countdown and keeps it going. Without this, the countdown timer does nothing
+//Calls the AnswerPage function - tying the timer to the user responses
 function showCountdown(){
   seconds--;
   $('#timer').html('<h3>Time Remaining: ' + seconds + '</h3>');
@@ -120,7 +125,9 @@ function showCountdown(){
     answerPage();
   }
 }
-
+//Function with conditional log to respond to user picks of 
+//Correct, Incorrect, or Unanswered Questions, while 
+//displaying the gifys for the right/wrong answers
 function answerPage(){
   $('#questionNumber').empty();
   $('.thisChoice').empty(); //Clears question page
@@ -144,15 +151,16 @@ function answerPage(){
     $('#answerToQuestion').html('The correct answer was: ' + rightAnswerText);
     answered = true;
   }
-  
+  //Sets the wait time between questions
   if(questionNum == (triviaArray.length-1)){
-    setTimeout(scoreboard, 5000)
+    setTimeout(scoreboard, 4000)
   } else{
     questionNum++;
-    setTimeout(newQuestion, 5000);
+    setTimeout(newQuestion, 4000);
   } 
 }
-
+//Function to output the final tally of right, wrong, and unanswered questions
+//Also clears the DOM of non-results info
 function scoreboard(){
   $('#timer').empty();
   $('#userMessage').empty();
