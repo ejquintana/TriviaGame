@@ -1,0 +1,90 @@
+body{
+	background: url('../images/circles_lines.jpg');
+	font-family: 'Orbitron', sans-serif;
+	color: white;
+	font-size: 25px;
+}
+.jumbotron{
+	text-align: center;
+	color: grey;
+	margin-top: 20px;
+	background: url('../images/bg.jpg');
+}
+header{
+	margin-bottom: 20px;
+}
+
+#timer {
+	color: red;
+	border: 2px solid red;
+	background-color: black;
+}
+
+.shape {
+  position: relative;
+  left: 0;
+  background-color: red;
+  width: 300px;
+  height: 80px;
+  display: block;
+	top: 0;
+  
+  x-transition: all 1s ease-in-out;
+  animation: ani 1.7s infinite;
+}
+
+@keyframes ani {
+  0% {
+    left: 200px;
+  }
+  50% {
+    left: 1000px;
+  }
+  100% {
+    left: 200px;
+  }
+}
+
+
+.btn-primary,.reset{
+	background-color: black;
+	color: white;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 30px;
+	padding: 20px;
+	margin-top: 100px;
+	margin-left: 110px;
+}
+.btn-primary:hover, .reset:hover{
+	background-color: #202364;
+}
+
+.container{
+	margin-top: 50px;
+	text-align: center;
+	height: 100%;
+	width: 700px;
+}
+
+h2, #userMessage, #finalMessage{
+	font-family: 'Sedgwick Ave Display', cursive;
+	font-size: 35px;
+}
+
+.thisChoice:hover{
+	background-color: #202364;
+	color: white;
+	padding: 10px;
+}
+
+#gify{
+	margin: 30px;
+}
+
+@media screen and (max-width:640px){
+	.container{
+		width: 500px;
+		margin-top: 200px;
+		size: 200%;
+	}	
+}
