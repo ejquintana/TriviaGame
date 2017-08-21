@@ -15,7 +15,7 @@ var triviaArray = [{
   ansArray: ["Joe Ratzcliffe", "Robbie", "Eleven", "Nina"],
   answer: 2
 },{
-  triviaQuestion: "Name the murderous computer in the Kubrick class 2001?",
+  triviaQuestion: "Name the murderous computer in the Kubrick classic 2001?",
   ansArray: ["HAr5000", "AstroCon20", "Computer", "Hal"],
   answer: 3
 },{
