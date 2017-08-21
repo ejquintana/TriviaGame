@@ -114,8 +114,8 @@ function countdown(){
   //sets timer to go down
   time = setInterval(showCountdown, 1000);
 }
-//Shows the timer countdown and keeps it going. Without this, the countdown timer does nothing
-//Calls the AnswerPage function - tying the timer to the user responses
+//Shows the timer countdown and keeps it going. 
+//Stops the countdown when a response occurs
 function showCountdown(){
   seconds--;
   $('#timer').html('<h3>Time Remaining: ' + seconds + '</h3>');
